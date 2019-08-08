@@ -4,11 +4,16 @@ import Users from "./Users";
 import "../App.css";
 
 class App extends Component {
+  componentDidMount() {
+    console.log(123);
+  }
   render() {
     return (
       <div className="App">
         <Navbar title="GitHub Finder" icon="fab fa-github" />
-        <Users />
+        <div className="container">
+          <Users />
+        </div>
       </div>
     );
   }
