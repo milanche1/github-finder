@@ -18,7 +18,12 @@ const UserItem = props => {
       />
       <h3>{login}</h3>
       <div>
-        <a href={html_url} className="btn btn-dark btn-sm my-1">
+        <a
+          href={html_url}
+          className="btn btn-dark btn-sm my-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           More
         </a>
       </div>
