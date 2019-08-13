@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Users from "./Users";
 import Search from "./Search";
 import Alert from "./Alert";
+import About from "../pages/About";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "../App.css";
 
 class App extends Component {
@@ -48,19 +49,35 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navbar title="GitHub Finder" icon="fab fa-github" />
-        <div className="container">
-          <Alert alert={this.state.alert} />
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            showClear={this.state.users.length > 0 ? true : false}
-            setAlert={this.setAlert}
-          />
-          <Users loading={this.state.loading} users={this.state.users} />
+      <Router>
+        <div className="App">
+          <Navbar title="GitHub Finder" icon="fab fa-github" />
+          <div className="container">
+            <Alert alert={this.state.alert} />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <Fragment>
+                    <Search
+                      searchUsers={this.searchUsers}
+                      clearUsers={this.clearUsers}
+                      showClear={this.state.users.length > 0 ? true : false}
+                      setAlert={this.setAlert}
+                    />
+                    <Users
+                      loading={this.state.loading}
+                      users={this.state.users}
+                    />
+                  </Fragment>
+                )}
+              />
+              <Route exact path="/about" component={About} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
