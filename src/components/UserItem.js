@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserItem = props => {
   // state = {
@@ -18,14 +19,14 @@ const UserItem = props => {
       />
       <h3>{login}</h3>
       <div>
-        <a
-          href={html_url}
+        <Link
+          to={`/user/${login}`}
           className="btn btn-dark btn-sm my-1"
           target="_blank"
           rel="noopener noreferrer"
         >
           More
-        </a>
+        </Link>
       </div>
     </div>
   );
